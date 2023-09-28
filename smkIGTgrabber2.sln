@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smkIGTgrabber2", "smkIGTgrabber2.csproj", "{BFFA41CA-1FB2-4C31-AE41-4BC458B46DAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFFA41CA-1FB2-4C31-AE41-4BC458B46DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFA41CA-1FB2-4C31-AE41-4BC458B46DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFA41CA-1FB2-4C31-AE41-4BC458B46DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFA41CA-1FB2-4C31-AE41-4BC458B46DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96282E72-A91E-4AD5-A7F3-ABE815D2676B}
+	EndGlobalSection
+EndGlobal
