@@ -17,12 +17,12 @@ namespace smkIGTgrabber2
             InitializeComponent();
         }
 
-        int camera = 3;
+        int camera = 3; //obs virtual camera
 
-        public static int q1 = 485;
-        public static int q2 = 12;
-        public static int w = 130;
-        public static int h = 33;
+        public static int q1 = 485; //X of igt area
+        public static int q2 = 12; //y of igt area
+        public static int w = 130; //igt area width
+        public static int h = 33; //igt area height
 
         System.Drawing.Rectangle rectangle4 = new System.Drawing.Rectangle(q1, q2, w, h);
 
@@ -33,7 +33,7 @@ namespace smkIGTgrabber2
             capture.Grab();
             var frame = capture.RetrieveMat();
             image = BitmapConverter.ToBitmap(frame);
-            image.Save(@"immmimimimi.jpg");
+            image.Save(@"immmimimimi.jpg"); //save pic so you can see what it saw
 
             
             return image;
@@ -42,7 +42,7 @@ namespace smkIGTgrabber2
         string getText()
         {
             Bitmap image = takePic();
-            Bitmap image2 = image.Clone(rectangle4, image.PixelFormat);
+            Bitmap image2 = image.Clone(rectangle4, image.PixelFormat);  //crop image with the earlier defined x,y,w,h
             var ocr = new IronTesseract();
 
             using (var ocrInput = new OcrInput())
@@ -50,7 +50,7 @@ namespace smkIGTgrabber2
                 ocrInput.AddImage(image2);
                 ocrInput.DeNoise();
 
-                ocrInput.SaveAsImages();
+                ocrInput.SaveAsImages(); //save image so you can see what ocr saw
                 var ocrResult = ocr.Read(ocrInput);
 
                 Console.WriteLine($"a {ocrResult.Text} c {ocrResult.Confidence}");
@@ -62,10 +62,10 @@ namespace smkIGTgrabber2
         {
             string igt = "";
 
-            string numericPhone = new String(text.Where(Char.IsDigit).ToArray());
+            string numericPhone = new String(text.Where(Char.IsDigit).ToArray()); //only take the numbers from the text it found
             Console.WriteLine($"b {numericPhone} {numericPhone.Length}");
 
-            if (numericPhone.Length == 6)
+            if (numericPhone.Length == 6) //go through the found numbers and format it to xx'xx"xx
             {
                 for (int x = 0; x < 6; x++)
                 {
@@ -88,23 +88,6 @@ namespace smkIGTgrabber2
         private void button1_Click(object sender, EventArgs e)
         {
             toIgt(getText());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var ocr = new IronTesseract();
-
-            using (var ocrInput = new OcrInput())
-            {
-                ocrInput.AddImage(@"C:\Users\qmena\source\repos\smkIGTgrabber2\bin\Debug\Untitled3.png");
-                ocrInput.DeNoise();
-                ocrInput.Binarize();
-
-                var ocrResult = ocr.Read(ocrInput);
-                Console.WriteLine($"a {ocrResult.Text}");
-                toIgt(ocrResult.Text);
-            }
-            
         }
     }
 }
